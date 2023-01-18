@@ -15,7 +15,7 @@ export class QuizController {
    @HttpCode(200)
    @UsePipes(ValidationPipe)
    CreateQuiz(@Body() quizDto: CreateQuizDto){
-    return this.quizService.create(quizDto)
+    return this.quizService.createNewQuiz(quizDto)
    }
     
 }
