@@ -1,8 +1,8 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Question } from "./question.entity";
 
 @Entity('options')
-export class Option{
+export class Option extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id:number;
@@ -12,7 +12,7 @@ export class Option{
 
     @Column({type: 'boolean'})
     isCorrect: boolean;
-
+    
     @ManyToOne(() => Question , (question) => question.options)
     question: Question
 

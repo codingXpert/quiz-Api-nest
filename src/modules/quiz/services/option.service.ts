@@ -17,9 +17,7 @@ export class OptionService {
     });
 
     question.options = [newOption, ...question.options];
-    console.log(question.options);
-
-    await this.repo.save({ question });
+    await question.save();
     return newOption;
   }
 }
