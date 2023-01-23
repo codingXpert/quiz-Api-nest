@@ -12,7 +12,7 @@ export class QuizService {
     return await this.repo
     .createQueryBuilder('q')  // here 'q' is alias(a temporary name for a table) for table quizes
     .leftJoinAndSelect('q.questions' , 'qt')  // joined quizes & questions // 'qt' is alias for table questions
-    // .leftJoinAndSelect('qt.options' , 'o')   // joined questions & options //   'o' is alias for table options
+    .leftJoinAndSelect('qt.options' , 'o')   // joined questions & options //   'o' is alias for table options
     // .take(1)                                 // pagination concept , show only one data at a time
     .getManyAndCount();                        // counts the total no of questions related to a quiz
   }
@@ -25,7 +25,7 @@ export class QuizService {
     return await this.repo.findOne(
       {
         where: { id },
-        relations: ['questions']
+        relations: ['questions' , 'questions.options']
       })
   }
 }
