@@ -8,8 +8,13 @@ import { CreateQuizDto } from "../dto/create-quiz.dto";
 @Injectable()
 export class QuizService {
   constructor(@InjectRepository(Quiz) private repo: Repository<Quiz>) { }
-  getAll() {
-    return [1, 2, 3]
+ async getAllQuiz():Promise<[Quiz[] , number]> {
+    return await this.repo
+    .createQueryBuilder('q')  // here 'q' is alias(a temporary name for a table) for table quizes
+    .leftJoinAndSelect('q.questions' , 'qt')  // joined quizes & questions // 'qt' is alias for table questions
+    // .leftJoinAndSelect('qt.options' , 'o')   // joined questions & options //   'o' is alias for table options
+    // .take(1)                                 // pagination concept , show only one data at a time
+    .getManyAndCount();                        // counts the total no of questions related to a quiz
   }
 
   async createNewQuiz(quizDto: CreateQuizDto) {

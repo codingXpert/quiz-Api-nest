@@ -9,6 +9,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
+import { Quiz } from '../entity/quiz.entity';
 import { QuizService } from '../services/quiz.service';
 
 @Controller('quiz')
@@ -16,8 +17,8 @@ export class QuizController {
   constructor(private readonly quizService: QuizService) {}
 
   @Get('/')
-  get() {
-    return this.quizService.getAll();
+  async getAllQuiz():Promise<[Quiz[] , number]> {
+    return await this.quizService.getAllQuiz();
   }
 
   @Post()
