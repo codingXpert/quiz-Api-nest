@@ -16,6 +16,6 @@ export class userRegisterRequestDto {
 
   @IsNotEmpty()
   @Length(3, 24)
-  @Matches(REGEX.PASSWORD_RULE)
+  @Matches(REGEX.PASSWORD_RULE ,  {message: MESSAGES.PASSWORD_RULE_MESSAGE})
   confirm: string;
 }
