@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { DatabaseConnectionService } from './dbConnection/dbConnection';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { DatabaseConnectionService } from './dbConnection/dbConnection';
     TypeOrmModule.forRootAsync({
       useClass: DatabaseConnectionService,
     }),
-    QuizModule
+    QuizModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],
