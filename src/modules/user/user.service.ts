@@ -4,6 +4,7 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UserService {
+
   async doUserRegistration(
     userRegister: userRegisterRequestDto,
   ): Promise<User> {
@@ -12,5 +13,9 @@ export class UserService {
     user.email = userRegister.email;
     user.password = userRegister.password;
     return await user.save();
+  }
+
+  async getUserByEmail(email: string):Promise<User | undefined>{
+    return await User.findOne({where:{email}})
   }
 }
