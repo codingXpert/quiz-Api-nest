@@ -1,5 +1,5 @@
 export default () => ({
-    appSecret: process.env.APP_SECRET,
+    appSecret: 'sdfghjkhjkljionhuj',
   });
   
   
