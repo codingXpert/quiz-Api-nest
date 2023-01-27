@@ -23,7 +23,7 @@ export class Question extends BaseEntity {
 
 
     @ApiProperty({
-        description: 'Quiz of the question', type: Option    // solves the error of circular dependency by adding "type Question" on both side i.e, controller & entity
+        description: 'Quiz of the question', type: Question    // solves the error of circular dependency by adding "type Question" on both side i.e, controller & entity
     })
     @ManyToOne(() => Quiz, (quiz) => quiz.questions)
     quiz: Quiz
