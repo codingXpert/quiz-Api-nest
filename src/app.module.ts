@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuizModule } from './modules/quiz/quiz.module';
-import { DatabaseConnectionService } from './dbConnection/dbConnection';
+import { DatabaseConnectionService } from './config/dbConnection';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 
