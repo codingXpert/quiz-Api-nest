@@ -11,6 +11,7 @@ import {
 
 import * as bcrypt from 'bcrypt';
 import { ApiProperty } from '@nestjs/swagger';
+import { userRoles } from './enum/user.enum';
 
 @Entity({ name: 'user' })
 export class User extends BaseEntity {
@@ -29,6 +30,9 @@ export class User extends BaseEntity {
   })
   @Column({ unique: true })
   email: string;
+
+  @Column({ type:'enum' , enum: userRoles , default: userRoles.MEMBER})
+  role: userRoles
 
   @ApiProperty({ description: 'Hashed user password' })
   @Column()
