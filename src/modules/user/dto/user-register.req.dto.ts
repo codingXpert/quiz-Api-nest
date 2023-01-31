@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, Length, Matches } from 'class-validator';
 import { MESSAGES, REGEX } from 'src/app.utils';
+import { userRoles } from '../enum/user.enum';
 
 export class userRegisterRequestDto {
   @ApiProperty({
@@ -26,6 +27,14 @@ export class userRegisterRequestDto {
   @Length(3, 24)
   @Matches(REGEX.PASSWORD_RULE, { message: MESSAGES.PASSWORD_RULE_MESSAGE })
   password: string;
+
+
+  @ApiProperty({
+    description: 'The role of the user',
+    example: 'admin | member',
+  })
+  @IsNotEmpty()
+  role: userRoles;
 
   @ApiProperty({
     description: 'The password of the user',

@@ -27,7 +27,7 @@ export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
     consumer
     .apply(ApiTokenCheckMiddleware)   // the name of the middleware you want to apply
-    .forRoutes({path: '*' , method: RequestMethod.ALL})  // for witch you want to apply the middleware
+    // .forRoutes({path: '*' , method: RequestMethod.ALL})  // for witch you want to apply the middleware
 
   }
 }    
