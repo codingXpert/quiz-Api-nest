@@ -9,6 +9,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ApiTokenCheckMiddleware } from './common/middleware/api-token-check.middleware';
 import path from 'path';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import path from 'path';
     QuizModule,
     UserModule,
     AuthModule,
+    MulterModule.register({dest: './uploads'})
   ],
   controllers: [AppController],
   providers: [AppService],
